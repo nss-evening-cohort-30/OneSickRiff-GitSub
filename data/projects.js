@@ -7,3 +7,19 @@ export const projects = [
     open: true
   }
 ]
+
+export const projectsCard = (object) => {
+  return `
+  <div class="card d-flex flex-row">
+    <h5>${projects.project_title}</h5>
+    <p>${projects.project_description}</p>
+  </div>`
+}
+
+export const renderedProjects = (array) => {
+  let finalRender = ''
+  array.forEach(project => {
+    finalRender += projectsCard(project)
+  });
+  return finalRender
+}
