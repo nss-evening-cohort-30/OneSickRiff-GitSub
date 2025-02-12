@@ -5,6 +5,34 @@ export const projects = [
     project_description: "",
     public: true,
     open: true
+  },
+  {
+    project_id: 2,
+    project_title: "",
+    project_description: "",
+    public: true,
+    open: true
+  },
+  {
+    project_id: 3,
+    project_title: "",
+    project_description: "",
+    public: true,
+    open: true
+  },
+  {
+    project_id: 4,
+    project_title: "",
+    project_description: "",
+    public: true,
+    open: true
+  },
+  {
+    project_id: 5,
+    project_title: "",
+    project_description: "",
+    public: true,
+    open: true
   }
 ]
 
