@@ -2,23 +2,23 @@ import { profile } from "../components/profile";
 profile()
 export const packages = [
   {
-    id: 1,
-    title: "",
-    desc: "",
+    package_id: 1,
+    package_title: "",
+    package_description: ""
   },
   {
-    id: 2,
-    title: "",
-    desc: "",
+    package_id: 2,
+    package_title: "",
+    package_description: ""
   },
   {
-    id: 3,
-    title: "",
-    desc: "",
+    package_id: 3,
+    package_title: "",
+    package_description: ""
   },
   {
-    id: 4,
-    title: "",
-    desc: "",
+    package_id: 4,
+    package_title: "",
+    package_description: ""
   }
 ]
