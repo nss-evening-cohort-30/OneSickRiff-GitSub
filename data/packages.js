@@ -1,3 +1,5 @@
+import { profile } from "../components/profile";
+profile()
 export const packages = [
   {
     package_id: 1,
