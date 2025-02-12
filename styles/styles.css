@@ -1,3 +1,15 @@
 body {
-  background-color: black;
+  background-color: rgb(14, 3, 39);
+}
+.button {
+  background-color: rgb(46, 20, 112);
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10%
+}
+#create-project {
+  background-color: rgb(46, 20, 112);
+}
+.text {
+  color: rgb(150, 132, 196);
 }
