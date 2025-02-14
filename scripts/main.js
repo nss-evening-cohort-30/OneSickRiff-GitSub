@@ -1,9 +1,7 @@
-import { renderToDom } from "../utils/renderToDom";
-import { packages } from "../data/packages";
-import { projects } from "../data/projects";
-import { repos } from "../data/repos";
-import { repoList } from "../data/repos";
-import { profile } from "../components/profile";
+import { renderToDom } from "../utils/renderToDom.js";
+import { packages } from "../data/packages.js";
+import { projects } from "../data/projects.js";
+import { repos } from "../data/repos.js";
 
 let projectTotal = projects.length;
 let repoTotal = repos.length;
@@ -11,30 +9,31 @@ let packageTotal = packages.length;
 
 const projectsCard = (object) => {
   return `
-  <div class="card d-flex flex-row">
-    <h5>${projects.project_title}</h5>
-    <p>${projects.project_description}</p>
+  <div class="card d-flex flex-column">
+    <h5>${object.project_title}</h5>
+    <p>${object.project_description}</p>
   </div>`
 }
 
 const reposCard = (object) => {
   return `
-  <div class="card d-flex flex-row">
-    <h5>${repos.repo_title}</h5>
-    <p>${repos.repo_description}</p>
+  <div class="card d-flex flex-column">
+    <h5>${object.repo_name}</h5>
+    <p>${object.repo_description}</p>
   </div>`
 }
 
 const packagesCard = (object) => {
   return `
-  <div class="card d-flex flex-row">
-    <h5>${packages.package_title}</h5>
-    <p>${packages.package_description}</p>
+  <div class="card d-flex flex-column">
+    <h5>${object.package_title}</h5>
+    <p>${object.package_description}</p>
   </div>`
 }
 
 const createItem = (type) => {
-  if (type == proj) {
+  console.log("hit")
+  if (type == "proj") {
     const projectObj = {
       project_id: projectTotal += 1,
       project_title: document.querySelector('#name').value,
@@ -43,7 +42,7 @@ const createItem = (type) => {
       open: true
     }
     projects.push(projectObj)
-  } else if (type == rep) {
+  } else if (type == "rep") {
     const reposObj = {
       repo_id: repoTotal += 1,
       repo_name: document.querySelector('#name').value,
@@ -52,7 +51,7 @@ const createItem = (type) => {
       star: true
     }
     repos.push(reposObj)
-  } else if (type == pinnedRep) {
+  } else if (type == "pinnedRep") {
     const reposObj = {
       repo_id: repoTotal += 1,
       repo_name: document.querySelector('#name').value,
@@ -61,7 +60,8 @@ const createItem = (type) => {
       star: true
     }
     repos.push(reposObj)  
-  } else if (type == pack) {
+    console.log(repos)
+  } else if (type == "pack") {
     const packageObj = {
       package_id: packageTotal += 1,
       package_title: document.querySelector('#name').value,
@@ -89,36 +89,36 @@ const renderedPinnedRepos = (array) => {
   let finalRender = ''
   const pinnedRepo = array.filter((item) => item.pinned == true)
   pinnedRepo.forEach(repo => {
-    finalRender += repoCard(repo)
+    finalRender += reposCard(repo)
   });
   return finalRender
 }
 
 const createData = (event) => {
-  e.preventDefault();
+  event.preventDefault();
   if (event.target.id === "project-submit-btn") {
-    createItem(proj)
+    createItem("proj")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(projects, proj))
+    renderToDom("#cards", renderedCards(projects, proj))
   }
   if (event.target.id === "repo-submit-btn") {
-    createItem(rep)
+    createItem("rep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(repos, rep))
+    renderToDom("#cards", renderedCards(repos, rep))
   }
   if (event.target.id === "pinned-repo-submit-btn") {
-    createItem(pinnedRep)
+    createItem("pinnedRep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedPinnedRepos(repos))
+    renderToDom("#cards", renderedPinnedRepos(repos))
   }
   if (event.target.id === "package-submit-btn") {
-    createItem(pack)
+    createItem("pack")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(packages, pack))
+    renderToDom("#cards", renderedCards(packages, pack))
   }
    
 }
@@ -128,6 +128,7 @@ const createData = (event) => {
 const startApp = () => {
 
   document.querySelector('#create-form').addEventListener('click', createData);
+  console.log("Startup")
   
 }
 
