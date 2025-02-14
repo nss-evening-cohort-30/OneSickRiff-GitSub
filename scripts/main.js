@@ -141,7 +141,6 @@ const createData = (event) => {
    
 }
 
-
 // START APP
 const startApp = () => {
   renderedCards(projects, TYPES.proj);
