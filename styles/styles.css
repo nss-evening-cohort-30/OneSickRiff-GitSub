@@ -1,15 +1,22 @@
 body {
   background-color: rgb(14, 3, 39);
+  display: inline-block;
 }
-.button {
+.navi {
   background-color: rgb(46, 20, 112);
   margin-left: 20px;
   margin-right: 20px;
-  border-radius: 10%
+  border-radius: 10px;
+  border: solid 3px rgb(14, 3, 39);
 }
-#create-project {
+.button {
+  background-color: rgb(46, 20, 112);
+  display: inline-block;
+  border-radius: 10px;
+}
+.card {
   background-color: rgb(46, 20, 112);
 }
-.text {
+.txt {
   color: rgb(150, 132, 196);
 }

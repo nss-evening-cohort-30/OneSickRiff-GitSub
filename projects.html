@@ -5,53 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
   <link rel="stylesheet" href="../styles/styles.css">
-  <title>GitSub</title>
+  <title>GitSub Projects</title>
 </head>
-<body>
-
-
-  <div class="d-flex flex-row justify-content-center" id="central-content">
-
-    <!-- Profile -->
-    <div class="card d-flex flex-column" id="profile" style="margin: 10px;">
-      <img src="https://images.ctfassets.net/u6v061izp9oz/3QZwNflk6BXx6Xl9VhB2Zg/4df3c9f91da5627121f8d9a2be1ab0db/english-bulldog-5422018_1280.jpg" alt="" width="200px" height="200px">
-
-    </div>
-
-    <!-- Interactibles -->
-    <div class="card d-flex flex-column justify-content-center" id="interactibles">
-
-      <!-- Navbar -->
-      <div class="card d-flex flex-row justify-content-center" id="navbar" style="margin: 10px;">
-        <button class="button" id="overview-btn">Overview</button>
-        <button class="button" id="repo-btn">Repositories</button>
-        <button class="button" id="projects-btn">Projects</button>
-        <button class="button" id="packages-btn">Packages</button>
+<body class="min-vh-100 d-flex flex-column">
+  <!-- Main content container -->
+  <div class="container-fluid flex-grow-1">
+    <div class="row">
+      <!-- Left Profile Section -->
+      <div class="col-md-3 p-3">
+        <div id="profile" class="card" style="width: 18rem;">
+          <img src="https://images.ctfassets.net/u6v061izp9oz/3QZwNflk6BXx6Xl9VhB2Zg/4df3c9f91da5627121f8d9a2be1ab0db/english-bulldog-5422018_1280.jpg" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="txt card-title">NAME OF PERSON</h5>
+            <p class="txt card-text">Project Manager</p>
+            <p class="txt card-text">This is the short description of the person and their job n' stuff</p>
+          </div>
+          <div class="card-header" id="cardLinks">
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <a class="txt nav-link active" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="txt nav-link active" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="txt nav-link active" href="#">Disabled</a>
+              </li>
+            </ul>
+          </div>
+          <div class="txt card-body">
+            <div id="social">Socials</div>
+            <div id="highlights">Highlights</div>
+            <div id="orgs">Organizations</div>
+            <div id="sponsers">Sponsers</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Content List -->
-      <div class="card" id="content-list" style="margin: 10px;">
-        <div class="card d-flex flex-row">
-          <h5 style="padding: 3px;">This Project</h5>
-          <p style="padding: 3px;">Description of a project</p>
+      <!-- Right Content Section -->
+      <div class="col-md-9 p-3">
+        <!-- Navbar -->
+        <div class="card mb-3">
+          <div class="card-body d-flex justify-content-center gap-3">
+            <a class="navi txt nav-link active" href="index.html">Overview</a>
+            <a class="navi txt nav-link active" href="projects.html">Projects</a>
+            <a class="navi txt nav-link active" href="packages.html">Packages</a>
+            <a class="navi txt nav-link active" href="repos.html">Repositories</a>
+          </div>
         </div>
-        <div class="card d-flex flex-row">
-          <h5 style="padding: 3px;">Another Project</h5>
-          <p style="padding: 3px;">An even better description of a project</p>
+
+        <!-- Show Project Here -->
+        <div id="cards" class="d-flex flex-wrap justify-content-center"></div>
+
+        <!-- Create Project Form -->
+        <div class="card" id="create-project">
+          <div class="card-body">
+            <h5 class="txt card-title">Create a new project</h5>
+            <form>
+              <div class="mb-3">
+                <label for="project-name" class="txt form-label">Project Name</label>
+                <input type="text" class="form-control" id="project-name">
+              </div>
+              <div class="mb-3">
+                <label for="project-desc" class="txt form-label">Description</label>
+                <input type="text" class="form-control" id="project-desc">
+              </div>
+              <button type="submit" class="button txt">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
-
-      <!-- Create Form -->
-      <div class="card" id="create-form" style="margin: 10px;"></div>
     </div>
   </div>
 
-
-  <footer class="footer">
-    <p>&copy; 2025 GitSub, Inc.</p>
-
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2025 GitSub, Inc.</p>
+    </div>
   </footer>
-  
+
   <script src="/scripts/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
