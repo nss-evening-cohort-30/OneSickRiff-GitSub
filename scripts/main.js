@@ -3,33 +3,46 @@ import { packages } from "../data/packages.js";
 import { projects } from "../data/projects.js";
 import { repos } from "../data/repos.js";
 
+const TYPES = {
+  proj: 'project',
+  rep: 'repository',
+  pinnedRep: 'pinnedRepository',
+  pack: 'package'
+};
+
 let projectTotal = projects.length;
 let repoTotal = repos.length;
 let packageTotal = packages.length;
 
 const projectsCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.project_title}</h5>
-    <p>${object.project_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.project_title}</h5>
+      <p class="txt">${object.project_description}</p>
+    </div>
+  </div>`;
+};
 
 const reposCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.repo_name}</h5>
-    <p>${object.repo_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.repo_name}</h5>
+      <p class="txt">${object.repo_description}</p>
+    </div>
+  </div>`;
+};
 
 const packagesCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.package_title}</h5>
-    <p>${object.package_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.package_title}</h5>
+      <p class="txt">${object.package_description}</p>
+    </div>
+  </div>`;
+};
 
 const createItem = (type) => {
   console.log("hit")
@@ -42,7 +55,7 @@ const createItem = (type) => {
       open: true
     }
     projects.push(projectObj)
-  } else if (type == "rep") {
+  } else if (type == TYPES.rep) {
     const reposObj = {
       repo_id: repoTotal += 1,
       repo_name: document.querySelector('#name').value,
@@ -51,7 +64,7 @@ const createItem = (type) => {
       star: true
     }
     repos.push(reposObj)
-  } else if (type == "pinnedRep") {
+  } else if (type == TYPES.pinnedRep) {
     const reposObj = {
       repo_id: repoTotal += 1,
       repo_name: document.querySelector('#name').value,
@@ -60,8 +73,7 @@ const createItem = (type) => {
       star: true
     }
     repos.push(reposObj)  
-    console.log(repos)
-  } else if (type == "pack") {
+  } else if (type == TYPES.pack) {
     const packageObj = {
       package_id: packageTotal += 1,
       package_title: document.querySelector('#name').value,
@@ -72,22 +84,29 @@ const createItem = (type) => {
 }
 
 const renderedCards = (array, type) => {
-  let finalRender = ''
+  let finalRender = '';
   array.forEach(item => {
-    if (type == proj) {
-      finalRender += projectsCard(item)
-    } else if (type == rep) {
-      finalRender += reposCard(item)
-    } else if (type == pack) {
-      finalRender += packagesCard(item)
+    switch(type) {
+      case TYPES.proj:
+        finalRender += projectsCard(item);
+        break;
+      case TYPES.rep:
+        finalRender += rep(item);
+        break;
+      case TYPES.pinnedRep:
+        finalRender += reposCard(item);
+        break;
+      case TYPES.pack:
+        finalRender += packagesCard(item);
+        break;
     }
   });
-  return finalRender
-}
+  renderToDom('#cards', finalRender);
+};
 
 const renderedPinnedRepos = (array) => {
   let finalRender = ''
-  const pinnedRepo = array.filter((item) => item.pinned == true)
+  const pinnedRepo = array.filter((item) => item.pinned === true)
   pinnedRepo.forEach(repo => {
     finalRender += reposCard(repo)
   });
@@ -123,13 +142,13 @@ const createData = (event) => {
    
 }
 
-
 // START APP
 const startApp = () => {
-
-  document.querySelector('#create-form').addEventListener('click', createData);
-  console.log("Startup")
-  
+  renderedCards(projects, TYPES.proj);
+  renderedCards(repos, TYPES.rep);
+  renderedCards(packages, TYPES.pack);
+  renderedCards(pinnedRepository, TYPES.pinnedRep);
+  document.querySelector('#create-form').addEventListener('submit', createData);
 }
 
 startApp();
