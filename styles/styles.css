@@ -1,6 +1,7 @@
 body {
   background-color: rgb(14, 3, 39);
 }
+
 .navi {
   background-color: rgb(44, 19, 107);
   margin-left: 20px;
@@ -8,21 +9,33 @@ body {
   border-radius: 10%;
   border: solid 3px rgb(39, 17, 95);
 }
+
 .button {
   background-color: rgb(46, 20, 112);
   border-radius: 10px;
 }
+
 .card {
   background-color: rgb(46, 20, 112);
+  border: solid 2px rgb(150, 132, 196);
+  margin-bottom: 1rem;
 }
+
 .txt {
   color: rgb(150, 132, 196);
 }
+
 footer {
   background-color: rgb(18, 3, 53);
 }
+
 #desc, #name {
   background-color: rgb(56, 30, 122);
   border: 2px solid rgb(74, 45, 145);
   color: rgb(150, 132, 196);
+}
+
+#container {
+  height: 300px;
+  overflow-y: auto;
 }
