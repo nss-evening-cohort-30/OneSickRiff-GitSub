@@ -3,12 +3,12 @@ export const form = (type) => {
   <h5>Create a new ${type}</h5>
   <form>
     <div class="form-group">
-      <label for="project-name">${type} Name</label>
-      <input type="text" class="form-control" id="${type}-name">
+      <label for="name">${type} Name</label>
+      <input type="text" class="form-control" id="name">
     </div>
     <div class="form-group">
-      <label for="${type}-desc">Description</label>
-      <input type="test" class="form-control" id="${type}-desc">
+      <label for="desc">Description</label>
+      <input type="test" class="form-control" id="desc">
     </div>
     <button type="submit" class="btn btn-primary" id="${type}-submit-btn">Submit</button>
   </form>
