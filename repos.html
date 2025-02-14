@@ -12,8 +12,8 @@
   <div class="container-fluid flex-grow-1">
     <div class="row">
       <!-- Left Profile Section -->
-      <div class="col-md-3 p-3">
-        <div id="profile" class="card" style="width: 18rem;">
+      <div class="col-md-3 p-3" style="width: 18rem;">
+        <div id="profile" class="card">
           <img src="https://images.ctfassets.net/u6v061izp9oz/3QZwNflk6BXx6Xl9VhB2Zg/4df3c9f91da5627121f8d9a2be1ab0db/english-bulldog-5422018_1280.jpg" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="txt card-title">NAME OF PERSON</h5>
@@ -23,13 +23,13 @@
           <div class="card-header" id="cardLinks">
             <ul class="nav nav-pills card-header-pills">
               <li class="nav-item">
-                <a class="txt nav-link active" href="#">Active</a>
+                <a class="txt nav-link" href="#">Active</a>
               </li>
               <li class="nav-item">
-                <a class="txt nav-link active" href="#">Link</a>
+                <a class="txt nav-link" href="#">Link</a>
               </li>
               <li class="nav-item">
-                <a class="txt nav-link active" href="#">Disabled</a>
+                <a class="txt nav-link" href="#">Disabled</a>
               </li>
             </ul>
           </div>
@@ -47,10 +47,10 @@
         <!-- Navbar -->
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-center gap-3">
-            <a class="navi txt nav-link active" href="index.html">Overview</a>
-            <a class="navi txt nav-link active" href="projects.html">Projects</a>
-            <a class="navi txt nav-link active" href="packages.html">Packages</a>
-            <a class="navi txt nav-link active" href="repos.html">Repositories</a>
+            <a class="navi txt nav-link" href="index.html">Overview</a>
+            <a class="navi txt nav-link" href="projects.html">Projects</a>
+            <a class="navi txt nav-link" href="packages.html">Packages</a>
+            <a class="navi txt nav-link" href="repos.html">Repositories</a>
           </div>
         </div>
 
@@ -63,12 +63,12 @@
             <h5 class="card-title txt">Create a new repository</h5>
             <form>
               <div class="mb-3">
-                <label for="project-name" class="form-label txt">Repository Name</label>
-                <input type="text" class="form-control" id="project-name">
+                <label for="name" class="form-label txt">Repository Name</label>
+                <input type="text" class="form-control" id="name">
               </div>
               <div class="mb-3">
-                <label for="project-desc" class="form-label txt">Description</label>
-                <input type="text" class="form-control" id="project-desc">
+                <label for="desc" class="form-label txt">Description</label>
+                <input type="text" class="form-control" id="desc">
               </div>
               <button type="submit" class="button txt">Submit</button>
             </form>
