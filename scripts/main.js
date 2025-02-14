@@ -45,7 +45,8 @@ const packagesCard = (object) => {
 };
 
 const createItem = (type) => {
-  if (type == proj) {
+  console.log("hit")
+  if (type == "proj") {
     const projectObj = {
       project_id: projectTotal += 1,
       project_title: document.querySelector('#name').value,
@@ -107,36 +108,36 @@ const renderedPinnedRepos = (array) => {
   let finalRender = ''
   const pinnedRepo = array.filter((item) => item.pinned === true)
   pinnedRepo.forEach(repo => {
-    finalRender += reposCard(repo)  // Use reposCard instead of repoCard
+    finalRender += reposCard(repo)
   });
   return finalRender
 }
 
 const createData = (event) => {
-  e.preventDefault();
+  event.preventDefault();
   if (event.target.id === "project-submit-btn") {
-    createItem(proj)
+    createItem("proj")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(projects, proj))
+    renderToDom("#cards", renderedCards(projects, proj))
   }
   if (event.target.id === "repo-submit-btn") {
-    createItem(rep)
+    createItem("rep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(repos, rep))
+    renderToDom("#cards", renderedCards(repos, rep))
   }
   if (event.target.id === "pinned-repo-submit-btn") {
-    createItem(pinnedRep)
+    createItem("pinnedRep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedPinnedRepos(repos))
+    renderToDom("#cards", renderedPinnedRepos(repos))
   }
   if (event.target.id === "package-submit-btn") {
-    createItem(pack)
+    createItem("pack")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#content-list", renderedCards(packages, pack))
+    renderToDom("#cards", renderedCards(packages, pack))
   }
    
 }
