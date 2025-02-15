@@ -125,7 +125,6 @@ const createData = (event) => {
     document.querySelector('#desc').value = ''
     renderToDom("#cards", renderedCards(packages, "pack"))
   }
-   
 }
 
 const cardsFilter = () => {
