@@ -74,11 +74,11 @@ const createItem = (type) => {
 const renderedCards = (array, type) => {
   let finalRender = ''
   array.forEach(item => {
-    if (type == proj) {
+    if (type == "proj") {
       finalRender += projectsCard(item)
-    } else if (type == rep) {
+    } else if (type == "rep") {
       finalRender += reposCard(item)
-    } else if (type == pack) {
+    } else if (type == "pack") {
       finalRender += packagesCard(item)
     }
   });
@@ -100,13 +100,13 @@ const createData = (event) => {
     createItem("proj")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#cards", renderedCards(projects, proj))
+    renderToDom("#cards", renderedCards(projects, "proj"))
   }
   if (event.target.id === "repo-submit-btn") {
     createItem("rep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#cards", renderedCards(repos, rep))
+    renderToDom("#cards", renderedCards(repos, "rep"))
   }
   if (event.target.id === "pinned-repo-submit-btn") {
     createItem("pinnedRep")
@@ -118,7 +118,7 @@ const createData = (event) => {
     createItem("pack")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
-    renderToDom("#cards", renderedCards(packages, pack))
+    renderToDom("#cards", renderedCards(packages, "pack"))
   }
    
 }
