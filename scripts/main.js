@@ -38,7 +38,6 @@ const packagesCard = (object) => {
 };
 
 const createItem = (type) => {
-  console.log("hit")
   if (type == "proj") {
     const projectObj = {
       project_id: projectTotal += 1,
@@ -87,7 +86,7 @@ const renderedCards = (array, type) => {
       finalRender += packagesCard(item)
     }
   });
-  renderToDom('#cards', finalRender);
+  return finalRender
 };
 
 const renderedPinnedRepos = (array) => {
@@ -117,6 +116,7 @@ const createData = (event) => {
     createItem("pinnedRep")
     document.querySelector('#name').value = ''
     document.querySelector('#desc').value = ''
+    console.log(renderedPinnedRepos(repos))
     renderToDom("#cards", renderedPinnedRepos(repos))
   }
   if (event.target.id === "package-submit-btn") {
@@ -128,13 +128,22 @@ const createData = (event) => {
    
 }
 
+const cardsFilter = () => {
+  if (isOverviewPage) {
+    renderToDom("#cards", renderedPinnedRepos(repos))
+  } else if (isPackagesPage){
+    renderToDom("#cards", renderedCards(packages, "pack"))
+  } else if (isProjectsPage){
+    renderToDom("#cards", renderedCards(projects, "proj"))
+  } else if (isReposPage){
+    renderToDom("#cards", renderedCards(repos, "rep"))
+  }
+}
+
 // START APP
 const startApp = () => {
-  renderedCards(projects, TYPES.proj);
-  renderedCards(repos, TYPES.rep);
-  renderedCards(packages, TYPES.pack);
-  renderedCards(pinnedRepository, TYPES.pinnedRep);
-  document.querySelector('#create-form').addEventListener('submit', createData);
+  cardsFilter()
+  document.querySelector('#create-form').addEventListener('click', createData);
 }
 
 startApp();
