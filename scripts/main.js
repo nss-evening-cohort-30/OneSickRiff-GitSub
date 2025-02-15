@@ -9,27 +9,33 @@ let packageTotal = packages.length;
 
 const projectsCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.project_title}</h5>
-    <p>${object.project_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.project_title}</h5>
+      <p class="txt">${object.project_description}</p>
+    </div>
+  </div>`;
+};
 
 const reposCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.repo_name}</h5>
-    <p>${object.repo_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.repo_name}</h5>
+      <p class="txt">${object.repo_description}</p>
+    </div>
+  </div>`;
+};
 
 const packagesCard = (object) => {
   return `
-  <div class="card d-flex flex-column">
-    <h5>${object.package_title}</h5>
-    <p>${object.package_description}</p>
-  </div>`
-}
+  <div class="card m-1" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="txt">${object.package_title}</h5>
+      <p class="txt">${object.package_description}</p>
+    </div>
+  </div>`;
+};
 
 const createItem = (type) => {
   console.log("hit")
@@ -60,7 +66,6 @@ const createItem = (type) => {
       star: true
     }
     repos.push(reposObj)  
-    console.log(repos)
   } else if (type == "pack") {
     const packageObj = {
       package_id: packageTotal += 1,
@@ -72,7 +77,7 @@ const createItem = (type) => {
 }
 
 const renderedCards = (array, type) => {
-  let finalRender = ''
+  let finalRender = '';
   array.forEach(item => {
     if (type == "proj") {
       finalRender += projectsCard(item)
@@ -82,12 +87,12 @@ const renderedCards = (array, type) => {
       finalRender += packagesCard(item)
     }
   });
-  return finalRender
-}
+  renderToDom('#cards', finalRender);
+};
 
 const renderedPinnedRepos = (array) => {
   let finalRender = ''
-  const pinnedRepo = array.filter((item) => item.pinned == true)
+  const pinnedRepo = array.filter((item) => item.pinned === true)
   pinnedRepo.forEach(repo => {
     finalRender += reposCard(repo)
   });
@@ -123,13 +128,13 @@ const createData = (event) => {
    
 }
 
-
 // START APP
 const startApp = () => {
-
-  document.querySelector('#create-form').addEventListener('click', createData);
-  console.log("Startup")
-  
+  renderedCards(projects, TYPES.proj);
+  renderedCards(repos, TYPES.rep);
+  renderedCards(packages, TYPES.pack);
+  renderedCards(pinnedRepository, TYPES.pinnedRep);
+  document.querySelector('#create-form').addEventListener('submit', createData);
 }
 
 startApp();
